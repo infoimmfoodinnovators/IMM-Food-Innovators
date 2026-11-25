@@ -63,3 +63,10 @@
 
 # 4. CUSTOM 404 PAGE
 ErrorDocument 404 /404.html
+
+# 5. CERTIFICATE SCANS: keep out of search/image indexes (viewing is handled inside the site's modal)
+<IfModule mod_headers.c>
+    <FilesMatch "^(iso_22000|iso_9001|fssai|fassai|GMP|apeda_udyam|haccp|quality|udyam)\.webp$">
+        Header set X-Robots-Tag "noindex, noimageindex"
+    </FilesMatch>
+</IfModule>

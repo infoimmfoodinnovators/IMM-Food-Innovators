@@ -306,15 +306,14 @@
           <p style="font-size: 0.76rem; color: #64748B; margin: 0; line-height: 1.35; font-weight: 500;">${subtitle}</p>
         </div>
         <div style="position: relative; background: #F8FAFC; border-radius: 12px; padding: 0.5rem; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);">
-          <img src="${docSrc}" alt="${title}" style="max-width: 100%; max-height: 65vh; width: auto; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); object-fit: contain; display: block; margin: 0 auto;" onerror="this.onerror=null; this.src='images/certifications/iso_9001.webp';">
+          <img class="cert-protected-img" draggable="false" oncontextmenu="return false" src="${docSrc}" alt="${title}" style="max-width: 100%; max-height: 65vh; width: auto; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); object-fit: contain; display: block; margin: 0 auto;" onerror="this.onerror=null; this.src='images/certifications/iso_9001.webp';">
+          <div class="cert-shield" oncontextmenu="return false" ondragstart="return false"></div>
         </div>
-        <div style="margin-top: 0.7rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+        <div style="margin-top: 0.7rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px;">
           <span style="font-size: 0.72rem; color: #16A34A; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
             <i class="fa-solid fa-circle-check"></i> Authentic Scan on File
           </span>
-          <a href="${docSrc}" target="_blank" rel="noopener noreferrer" style="font-size: 0.72rem; color: var(--primary-color); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-            Open Full Image <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+
         </div>
       </div>
     `);
@@ -325,6 +324,12 @@
       const container = overlay.querySelector('.modal-container');
       if (container) {
         container.classList.add('cert-modal-box');
+        if (!container.dataset.certGuard) {
+          container.dataset.certGuard = '1';
+          const guard = (e) => { if (container.classList.contains('cert-modal-box')) e.preventDefault(); };
+          container.addEventListener('contextmenu', guard);
+          container.addEventListener('dragstart', guard);
+        }
       }
     }
   };

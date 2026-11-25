@@ -887,3 +887,25 @@
   }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+
+/* ── Certificate documents: view-only (no drag / save / print) ── */
+.cert-protected-img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+.cert-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+@media print {
+  .modal-container.cert-modal-box { display: none !important; }
+}
