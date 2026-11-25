@@ -289,6 +289,39 @@
     }
   };
 
+  /* Full-size certificate view: stays inside the site (no file address, no new tab) and is view-only */
+  window.openCertFull = function (src, title) {
+    const existing = document.getElementById('certFullView');
+    if (existing) existing.remove();
+    const v = document.createElement('div');
+    v.id = 'certFullView';
+    v.className = 'cert-full-overlay';
+    v.innerHTML = `
+      <div class="cert-full-bar">
+        <span class="cert-full-title"></span>
+        <button type="button" class="cert-full-close" aria-label="Close full image">&#10005;</button>
+      </div>
+      <div class="cert-full-scroll">
+        <div class="cert-full-wrap">
+          <img class="cert-protected-img" draggable="false" alt="">
+          <div class="cert-shield"></div>
+        </div>
+      </div>`;
+    v.querySelector('.cert-full-title').textContent = title || 'Official Certification Document';
+    const img = v.querySelector('img');
+    img.alt = title || 'Certificate';
+    img.src = src;
+    const block = (e) => e.preventDefault();
+    v.addEventListener('contextmenu', block);
+    v.addEventListener('dragstart', block);
+    const close = () => { v.remove(); document.removeEventListener('keydown', onKey, true); };
+    const onKey = (e) => { if (e.key === 'Escape') { e.stopPropagation(); close(); } };
+    v.querySelector('.cert-full-close').addEventListener('click', close);
+    v.addEventListener('click', (e) => { if (e.target === v || e.target.classList.contains('cert-full-scroll')) close(); });
+    document.addEventListener('keydown', onKey, true);
+    document.body.appendChild(v);
+  };
+
   window.openCertModal = function (certKey, customName) {
     const key = (certKey || '').toLowerCase();
     const info = certDetailsData[key] || certDetailsData['iso-9001'];
@@ -309,11 +342,13 @@
           <img class="cert-protected-img" draggable="false" oncontextmenu="return false" src="${docSrc}" alt="${title}" style="max-width: 100%; max-height: 65vh; width: auto; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); object-fit: contain; display: block; margin: 0 auto;" onerror="this.onerror=null; this.src='images/certifications/iso_9001.webp';">
           <div class="cert-shield" oncontextmenu="return false" ondragstart="return false"></div>
         </div>
-        <div style="margin-top: 0.7rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px;">
+        <div style="margin-top: 0.7rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
           <span style="font-size: 0.72rem; color: #16A34A; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
             <i class="fa-solid fa-circle-check"></i> Authentic Scan on File
           </span>
-
+          <button type="button" class="cert-full-btn" data-src="${docSrc}" data-title="${String(title).replace(/"/g, '&quot;')}" style="font-size: 0.72rem; color: var(--primary-color); font-weight: 700; background: none; border: 0; padding: 4px 2px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; font-family: inherit;">
+            Open Full Image <i class="fa-solid fa-expand"></i>
+          </button>
         </div>
       </div>
     `);
@@ -330,6 +365,8 @@
           container.addEventListener('contextmenu', guard);
           container.addEventListener('dragstart', guard);
         }
+        const fullBtn = container.querySelector('.cert-full-btn');
+        if (fullBtn) fullBtn.addEventListener('click', () => window.openCertFull(fullBtn.dataset.src, fullBtn.dataset.title));
       }
     }
   };

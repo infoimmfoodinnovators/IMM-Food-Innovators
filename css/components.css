@@ -909,3 +909,51 @@
 @media print {
   .modal-container.cert-modal-box { display: none !important; }
 }
+
+/* ── Full-size certificate viewer (in-site, view-only) ── */
+.cert-full-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  background: rgba(5, 28, 18, 0.94);
+  display: flex;
+  flex-direction: column;
+}
+.cert-full-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0.6rem 1rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.cert-full-close {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.cert-full-close:hover { background: rgba(255, 255, 255, 0.28); }
+.cert-full-scroll {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  padding: 0.5rem 1rem 1.5rem 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+.cert-full-wrap {
+  position: relative;
+  margin: 0 auto;
+  background: #FFFFFF;
+  flex: none;
+}
+.cert-full-wrap img { display: block; max-width: none; width: auto; height: auto; }
+@media print {
+  .cert-full-overlay { display: none !important; }
+}
