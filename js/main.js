@@ -166,7 +166,7 @@
         <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Fill out the form below and our export sales manager will send specifications and pricing within 24 hours.</p>
         <form id="modalQuoteForm">
           <!-- Honeypot anti-spam field -->
-          <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;" tabindex="-1" autocomplete="off">
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;" tabindex="-1">
           <div class="form-group">
             <label>Selected Product *</label>
             <select name="product" required style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-family: inherit; font-size: 0.95rem;">
@@ -191,6 +191,7 @@
             <textarea name="message" required placeholder="e.g. Need 500 kg for export to Dubai..."></textarea>
           </div>
           <button type="submit" class="btn-primary" style="width: 100%;">Submit Bulk Inquiry →</button>
+          <p class="form-consent">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
           <div id="modalQuoteSuccess" style="display:none; color: #0A2E1D; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 1rem; border-radius: var(--radius-sm); margin-top: 1rem; font-weight: 600; text-align: center;">
             ✓ Thank you! Your inquiry has been sent to info@immfoodinnovators.in.
           </div>
@@ -529,7 +530,7 @@
             submitBtn.disabled = false;
           }
           if (successMessage) {
-            successMessage.innerHTML = `✓ Inquiry Recorded! We will contact you at ${formJson.email || 'your email'}.`;
+            successMessage.innerHTML = `✓ Inquiry Recorded! We will contact you at ${String(formJson.email || 'your email').replace(/[&<>"']/g, (c) => '&#' + c.charCodeAt(0) + ';')}.`;
             successMessage.style.display = 'block';
           }
         });

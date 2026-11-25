@@ -28,11 +28,14 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <!-- Font Awesome Icons & Main CSS -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="css/style.css?v=26.0">
-    <link rel="stylesheet" href="css/components.css?v=26.0">
-    <link rel="stylesheet" href="css/responsive.css?v=26.0">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous"></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/style.css?v=30.0">
+    <link rel="stylesheet" href="css/components.css?v=30.0">
+    <link rel="stylesheet" href="css/responsive.css?v=30.0">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -157,6 +160,7 @@
 
                     <li><a href="blogs.html" class="nav-link">Blogs</a></li>
                     <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">Request Quote →</a></li>
                 </ul>
 
             </nav>
@@ -195,7 +199,7 @@
 
                     <form id="contactFormPage" class="contact-form">
                         <!-- Honeypot anti-spam field -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;" tabindex="-1" autocomplete="off">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;" tabindex="-1">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="contact_name">Full Name *</label>
@@ -297,6 +301,7 @@
                         </div>
                         <button type="submit" class="btn-primary" style="width: 100%;">Submit Business Inquiry
                             →</button>
+                        <p class="form-consent">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
                         <div id="contactPageSuccess"
                             style="display:none; color: #0A2E1D; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 1rem; border-radius: var(--radius-sm); margin-top: 1rem; font-weight: 600; text-align: center;">
                             ✓ Thank you! Your inquiry has been sent to our sales team. We will contact you shortly.
@@ -373,7 +378,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Quick Links</h4>
+                <h3>Quick Links</h3>
                 <div class="footer-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
@@ -386,7 +391,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Product Categories</h4>
+                <h3>Product Categories</h3>
                 <div class="footer-links">
                     <a href="products.html?category=powder">Fruit & Veggie Powders</a>
                     <a href="products.html?category=spices">Pure Spice Powders</a>
@@ -396,7 +401,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Contact Info</h4>
+                <h3>Contact Info</h3>
                 <p>Nhavi Hambardi Road, Nhavi, Yawal, Jalgaon, Maharashtra - 425524</p>
                 <p style="white-space: nowrap;"><a href="tel:+919114403000" style="color:inherit; font-weight: 700; text-decoration: none;">+91 9114403000</a> / <a href="tel:+919170625050" style="color:inherit; text-decoration: none;">+91 9170625050</a></p>
                 <p><a href="mailto:info@immfoodinnovators.in" style="color:inherit;">info@immfoodinnovators.in</a></p>
@@ -404,7 +409,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 IMM Food Innovators LLP. All Rights Reserved. ISO 9001:2015, ISO 22000:2018 & FSSAI Certified Facility.</p>
+            <p>© 2026 IMM Food Innovators LLP. All Rights Reserved. ISO 9001:2015, ISO 22000:2018 & FSSAI Certified Facility. &nbsp;|&nbsp; <a href="privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a></p>
         </div>
     </footer>
 
@@ -416,10 +421,11 @@
         </div>
     </div>
 
-    <script src="data/company.js"></script>
-    <script src="data/products.js"></script>
-    <script src="js/main.js?v=26.0"></script>
+    <script src="data/company.js?v=30.0"></script>
+    <script src="data/products.js?v=30.0"></script>
+    <script src="js/main.js?v=30.0"></script>
     <script>
+        const escapeHtml = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('contactFormPage');
             const successMsg = document.getElementById('contactPageSuccess');
@@ -481,7 +487,7 @@
                             console.error('Email Submission:', err);
                             submitBtn.textContent = origText;
                             submitBtn.disabled = false;
-                            successMsg.innerHTML = `✓ Inquiry Recorded! We will email you at ${formJson.email || 'your email'}.<br><a href="https://wa.me/919114403000?text=Hi%20IMM%20Food%20Innovators%2C%20I%20just%20submitted%20a%20website%20inquiry" target="_blank" style="display:inline-block; margin-top: 10px; background:#25D366; color:#fff; padding:8px 16px; border-radius:50px; text-decoration:none; font-weight:700;">💬 Send Instant WhatsApp Copy to Sales (+91 9114403000)</a>`;
+                            successMsg.innerHTML = `✓ Inquiry Recorded! We will email you at ${escapeHtml(formJson.email || 'your email')}.<br><a href="https://wa.me/919114403000?text=Hi%20IMM%20Food%20Innovators%2C%20I%20just%20submitted%20a%20website%20inquiry" target="_blank" style="display:inline-block; margin-top: 10px; background:#25D366; color:#fff; padding:8px 16px; border-radius:50px; text-decoration:none; font-weight:700;">💬 Send Instant WhatsApp Copy to Sales (+91 9114403000)</a>`;
                             successMsg.style.display = 'block';
                             form.reset();
                         });

@@ -8,7 +8,7 @@
     Header set X-Frame-Options "SAMEORIGIN"
     Header set X-Content-Type-Options "nosniff"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
-    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
@@ -60,3 +60,6 @@
         Header set Cache-Control "max-age=2592000, public"
     </FilesMatch>
 </IfModule>
+
+# 4. CUSTOM 404 PAGE
+ErrorDocument 404 /404.html

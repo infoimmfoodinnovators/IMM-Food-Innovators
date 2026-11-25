@@ -40,6 +40,10 @@
 
   .hamburger {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .nav-actions {
@@ -243,6 +247,20 @@
   .buyer-guide-table, table {
     min-width: 580px;
   }
+
+  .modal-container table {
+    min-width: 0;
+  }
+
+  .nav-cta-item { width: 100%; margin-top: 0.5rem; }
+  .nav-cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+
+  .export-logistics-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* ── SMALL MOBILE BREAKPOINTS (<= 480px) ── */
@@ -265,4 +283,14 @@
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
   }
+}
+
+@media (max-width: 480px) {
+  .export-logistics { padding: 1rem; }
+  .export-logistics-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Tablet band: navbar is too narrow for the Request Quote button (Contact + WhatsApp remain) ── */
+@media (min-width: 769px) and (max-width: 899px) {
+  .nav-cta-item { display: none; }
 }
