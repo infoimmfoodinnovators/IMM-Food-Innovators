@@ -471,7 +471,7 @@
   transition: transform 0.3s ease !important;
 }
 
-.cert-card h4 {
+.cert-card h4, .cert-card h3 {
   color: #0A2E1D !important;
   font-size: 0.88rem !important;
   font-weight: 800 !important;
@@ -513,7 +513,7 @@
     min-height: 60px !important;
     margin-bottom: 0.5rem !important;
   }
-  .cert-card h4 {
+  .cert-card h4, .cert-card h3 {
     font-size: 0.8rem !important;
   }
   .cert-card p {
@@ -816,4 +816,96 @@
   background: var(--accent-red);
   color: #FFFFFF;
   border-color: var(--accent-red);
+}
+
+
+/* ── Export logistics block (services.html) ── */
+.export-logistics {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-linen);
+  border: 1px solid rgba(36, 104, 40, 0.18);
+  border-radius: var(--radius-md);
+}
+.export-logistics-title {
+  font-size: 1.15rem;
+  color: var(--primary-dark);
+  margin: 0 0 1rem 0;
+}
+.export-logistics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.export-logistics-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+.export-logistics-item strong { color: var(--primary-dark); font-size: 1rem; }
+.export-logistics-item span { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4; }
+.export-logistics-item .export-logistics-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #B45309;
+}
+.export-logistics-hs { margin: 1rem 0 0 0; font-size: 0.88rem; color: var(--text-secondary); }
+
+/* ── Form consent line ── */
+.form-consent { margin: 0.75rem 0 0 0; font-size: 0.78rem; color: var(--text-muted); text-align: center; }
+.form-consent a { color: var(--primary-dark); text-decoration: underline; }
+
+/* ── Navbar CTA list item ── */
+.nav-cta-item { display: flex; align-items: center; }
+
+/* ── Print: Technical Data Sheet (only the open spec modal is printed) ── */
+.tds-print-header, .tds-print-footer { display: none; }
+@media print {
+  html, body { overflow: visible !important; height: auto !important; background: #FFFFFF !important; }
+  body > *:not(#modalOverlay) { display: none !important; }
+  #modalOverlay {
+    position: static !important; display: block !important; opacity: 1 !important; visibility: visible !important;
+    background: #FFFFFF !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; padding: 0 !important;
+  }
+  #modalOverlay .modal-container {
+    position: static !important; max-height: none !important; overflow: visible !important; box-shadow: none !important;
+    transform: none !important; max-width: none !important; width: 100% !important; padding: 0 !important; border-radius: 0 !important;
+  }
+  .modal-close, .no-print { display: none !important; }
+  .tds-print-header {
+    display: block !important; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #246828;
+    font-size: 11px; line-height: 1.5; color: #241608;
+  }
+  .tds-print-footer {
+    display: block !important; margin-top: 14px; padding-top: 8px; border-top: 1px solid #999; font-size: 10px; color: #4A4036;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+
+/* ── Certificate documents: view-only (no drag / save / print) ── */
+.cert-protected-img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+.cert-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+@media print {
+  .modal-container.cert-modal-box { display: none !important; }
 }

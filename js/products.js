@@ -40,6 +40,13 @@
     `;
   }
 
+  /* Print / Save the open Technical Data Sheet as PDF (browser print dialog) */
+  window.printTDS = function () {
+    const el = document.getElementById('tdsPrintDate');
+    if (el) el.textContent = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+    window.print();
+  };
+
   /* Open Product Technical Specification Modal (TDS Sheet) */
   window.openSpecModal = function (productName) {
     const productsData = window.productsData || [];
@@ -73,6 +80,11 @@
     if (window.openModal) {
       window.openModal(`
         <div class="spec-tds-container" style="text-align: left; max-width: 720px; margin: 0 auto;">
+          <div class="tds-print-header">
+            <strong>IMM Food Innovators LLP</strong> &mdash; Technical Data Sheet<br>
+            Nhavi Hambardi Road, Nhavi, Yawal, Jalgaon, Maharashtra 425524, India &bull; +91 9114403000 &bull; info@immfoodinnovators.in<br>
+            Document ref: ${docId} &bull; Printed: <span id="tdsPrintDate"></span>
+          </div>
           <!-- TOP DOCUMENT HEADER -->
           <div class="spec-tds-header-bar" style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.75rem; padding-right: 2.5rem;">
             <div>
@@ -196,10 +208,10 @@
                       3. B2B Packaging, Customs & Logistics
                     </td>
                   </tr>
-                  <tr style="border-bottom: 1px solid #F1F5F9;">
+                  ${d.hsCode ? `<tr style="border-bottom: 1px solid #F1F5F9;">
                     <td style="padding: 9px 14px; color: var(--text-secondary); font-weight: 600;">HS Customs Tariff Code</td>
-                    <td style="padding: 9px 14px; color: #047857; font-weight: 700;">${d.hsCode || '0803.90 / 0712.90'}</td>
-                  </tr>
+                    <td style="padding: 9px 14px; color: #047857; font-weight: 700;">${d.hsCode}</td>
+                  </tr>` : ''}
                   <tr style="border-bottom: 1px solid #F1F5F9; background: #FAFAFA;">
                     <td style="padding: 9px 14px; color: var(--text-secondary); font-weight: 600;">Standard B2B Packaging</td>
                     <td style="padding: 9px 14px; color: var(--primary-dark); font-weight: 600;">${d.packaging || '25 kg Food-Grade HDPE Bag with Inner PE Liner'}</td>
@@ -221,8 +233,10 @@
             </div>
           </div>
 
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <button class="btn-primary" style="flex: 1; padding: 14px;" onclick="closeModal(); openQuoteModal('${p.name.replace(/'/g, "\\'")}');">Request Price Quote & Batch COA Spec →</button>
+          <div class="tds-print-footer">Typical specification. Batch-specific results are provided in the Certificate of Analysis on request. IMM Food Innovators LLP &bull; www.immfoodinnovators.in</div>
+          <div class="no-print" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="btn-primary" style="flex: 2; min-width: 220px; padding: 14px;" onclick="closeModal(); openQuoteModal('${p.name.replace(/'/g, "\\'")}');">Request Price Quote & Batch COA Spec →</button>
+            <button type="button" class="btn-secondary" style="flex: 1; min-width: 150px; padding: 12px 16px; font-weight: 700;" onclick="printTDS()"><i class="fa-solid fa-print" aria-hidden="true"></i> Print / Save TDS</button>
           </div>
         </div>
       `);

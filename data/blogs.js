@@ -126,7 +126,7 @@ const blogsData = [
     date: "August 12, 2026",
     readTime: "5 min read",
     image: "images/blog_contract_farming.webp",
-    excerpt: "Sourcing 60-70% of raw materials from ~250 acres in Jalgaon guarantees batch traceability and zero pesticide residue.",
+    excerpt: "Sourcing 60-70% of raw materials from ~250 acres in Jalgaon supports batch traceability and pesticide-use discipline.",
     content: `
       <p>In global B2B food manufacturing, quality control that begins at the factory gate is already too late. Soil health, irrigation purity, harvest timing, and field hygiene directly dictate the nutrient density, moisture retention, and microbial safety of the final dehydrated product.</p>
 
@@ -134,12 +134,12 @@ const blogsData = [
       <p>At IMM Food Innovators LLP, we contract-farm approximately 250 acres of prime agricultural land in Jalgaon, Maharashtra. This strategic self-sourcing initiative supplies an estimated 60-70% of our total raw material requirements internally, providing unprecedented operational advantages for wholesale buyers and exporters:</p>
       <ul>
         <li><strong>Direct Field-Level Agronomic Oversight:</strong> Our technical team dictates soil enrichment, non-toxic pest management, and natural fertilizer protocols from seed sowing to harvest.</li>
-        <li><strong>Zero Pesticide & Chemical Residue Risk:</strong> By controlling 60-70% of crops internally, we eliminate pesticide contamination risks often found in open mandi wholesale trading networks.</li>
+        <li><strong>Pesticide-Use Discipline:</strong> By controlling 60-70% of crops internally, we apply our own agronomic and pre-harvest-interval controls instead of relying on open mandi wholesale trading networks.</li>
         <li><strong>Harvest-to-Dehydration Speed:</strong> Cavendish bananas, moringa leaves, and spices are harvested at optimal maturity and transferred to our Yawal facility within hours, preventing post-harvest nutrient breakdown.</li>
       </ul>
 
       <h3>Vetted Regional Partner Network</h3>
-      <p>For the remaining 30-40% of specialized raw ingredients, IMM partners exclusively with vetted local farmer collectives under strict agronomic contracts. Every external batch undergoes mandatory laboratory testing for moisture content, heavy metals, and pesticide compliance before entering our processing lines.</p>
+      <p>For the remaining 30-40% of specialized raw ingredients, IMM partners exclusively with vetted local farmer collectives under strict agronomic contracts. Every external batch undergoes laboratory testing against our incoming-material specification before entering our processing lines.</p>
 
       <h3>Why Field Traceability Matters for Exporters</h3>
       <p>International food brands and FMCGs demand complete supply chain transparency. IMM's integrated contract farming infrastructure provides batch-level traceability back to the specific farm plot, giving our B2B partners total documentation confidence for ISO 9001:2015, FSSAI, and international export audits.</p>
